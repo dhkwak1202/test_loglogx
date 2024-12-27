@@ -1,0 +1,19 @@
+# NAME
+# EMAIL (IF NOT AVAILABLE, PUT #)
+# HOMEPAGE (IF NOT AVAILABLE, PUT #)
+# TOPIC (ONE OR MORE)
+
+Wonjong Kim
+wj1012@yonsei.ac.kr
+#
+Staggered Discontinuous Galerkin Methods 
+
+Hyunsuk Lee
+hsleehenry@yonsei.ac.kr
+#
+Staggered Discontinuous Galerkin Methods 
+
+Hong Nhung Do
+dohongnhung.hus@gmail.com
+#
+Staggered Discontinuous Galerkin Methods 
