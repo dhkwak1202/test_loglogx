@@ -23,9 +23,9 @@
 						<!-- Header -->
 						<header id="header">
 							<a href="index.html" class="logo"><strong>Eun-Jae Park</strong>'s website</a>
-							<ul class="icons">
+							<!-- <ul class="icons">
 								<li><a href="ejpark@yonsei.ac.kr" class="icon solid fa-envelope"><span class="label">Medium</span></a></li>
-							</ul>
+							</ul> -->
 						</header>
 
                         <!-- Table -->
@@ -52,58 +52,68 @@
 					<div class="inner">
 
 						<!-- Search -->
-							<section id="search" class="alt">
+							<!-- <section id="search" class="alt">
 								<form method="post" action="#">
 									<input type="text" name="query" id="query" placeholder="Search" />
 								</form>
-							</section>
+							</section> -->
 
 						<!-- Menu -->
-							<nav id="menu">
-								<header class="major">
-									<h2>Menu</h2>
-								</header>
-								<ul>
-									<li><a href="index.html">About</a></li>
-									<li><a href="research.html">Research</a></li>
-									<li><a href="people.html">People</a></li>
+                            <nav id="menu">
+                                <header class="major">
+                                    <h2>Menu</h2>
+                                </header>
+                                <ul>
+                                    <li><a href="index.html">About</a></li>
+                                    <li><a href="research.html">Research</a></li>
+                                    <li><a href="people.html">People</a></li>
+                                    <li><a href="paper.html">Publication</a></li>
+                                    <li><a href="conferences.html">Conference</a></li>
 
-									<li>
-										<span class="opener">Publication</span>
-										<ul>
-											<li><a href="paper.html">Papers</a></li>
-											<li><a href="conferences.html">Conference</a></li>
-										</ul>
-									</li>
-								</ul>
-							</nav>
+                                    <!-- <li> -->
+                                        <!-- <span class="opener">Publication</span>
+                                        <ul>
+                                            <li><a href="paper.html">Papers</a></li>
+                                            <li><a href="conferences.html">Conference</a></li>
+                                        </ul> -->
+                                    <!-- </li> -->
 
-						<!-- Section -->
-							<section>
-								<header class="major">
-									<h2>Get in touch</h2>
-								</header>
-								<!-- <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p> -->
-								<ul class="contact">
-									<li class="icon solid fa-envelope"><a href="#">ejpark@yonsei.ac.kr</a></li>
-									<li class="icon solid fa-phone">(+82)2-2123-6127</li>
-									<li class="icon solid fa-home">Room 611, Building 117 (A.S.T.C.),<br>
-										 Yonsei University <br>
-										50 Yonsei-ro, Seodaemun-gu, Seoul 03722, Korea <br />
-									</li>
-								</ul>
-							</section>
+                                    <!-- <li><a href="publication.html">Publication</a></li> -->
+                                    </li>
+                                </ul>
+                            </nav>
+
+                            <!-- Section -->
+                            <section>
+                                <header class="major">
+                                    <h2>Get in touch</h2>
+                                </header>
+                                <ul class="contact">
+                                    <li class="icon solid fa-envelope"><a href="#">ejpark@yonsei.ac.kr</a></li>
+                                    <li class="icon solid fa-phone">(+82)2-2123-6127</li>
+                                    <li class="icon solid fa-home">Room 611, Building 117 (A.S.T.C.),<br>
+                                        Yonsei University <br>
+                                        50 Yonsei-ro, Seodaemun-gu, Seoul 03722, Korea <br />
+                                    </li>
+                                </ul>
+                            </section>
 
 						<!-- Footer -->
 						<footer id="footer">
 							<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 						</footer>
-
 					</div>
 				</div>
 
 			</div>
 
+            <!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            
     </body>
 
     <script>
@@ -115,11 +125,12 @@
                 url: 'data/organized_conferences.txt',
                 success: function (data) {
                     console.log('Organized conferences data loaded successfully'); // Load confirmation
-                    var info = data.trim().split('\n'); // Split by newline
+                    var info = data.split('\n\n'); // Split by newline
                     var myst = '';
-                    for (var i = 0; i < info.length; i += 5) { // Process each entry (5 lines per entry)
-                        myst += ('<li><a href="' + info[i] + '" target="_blank" rel="noopener noreferrer">' + info[i + 1] + '</a>, ');
-                        myst += (info[i + 2] + ', ' + info[i + 3] + ', ' + info[i + 4] + '</li>');
+                    for(var i=1;i<info.length; i++){
+                        var talk = info[i].split('\n');
+                        myst += ('<li><a href="' + talk[0] + '" target="blank" rel="noopener noreferrer">' + talk[1] + '</a>, ');
+                        myst += (talk[2] + ', ' + talk[3] + ', ' + talk[4]);
                     }
                     document.getElementById("organized").innerHTML = myst;
                 },
@@ -134,11 +145,12 @@
                 url: 'data/invited_talks.txt',
                 success: function (data) {
                     console.log('Invited talks data loaded successfully'); // Load confirmation
-                    var info = data.trim().split('\n'); // Split by newline
+                    var info = data.split('\n\n'); // Split by newline
                     var myst = '';
-                    for (var i = 0; i < info.length; i += 5) { // Process each entry (5 lines per entry)
-                        myst += ('<li><a href="' + info[i] + '" target="_blank" rel="noopener noreferrer">' + info[i + 1] + '</a>, ');
-                        myst += (info[i + 2] + ', ' + info[i + 3] + ', ' + info[i + 4] + '</li>');
+                    for(var i=1;i<info.length; i++){
+                        var talk = info[i].split('\n');
+                        myst += ('<li><a href="' + talk[0] + '" target="blank" rel="noopener noreferrer">' + talk[1] + '</a>, ');
+                        myst += (talk[2] + ', ' + talk[3] + ', ' + talk[4]);
                     }
                     document.getElementById("invited").innerHTML = myst;
                 },
@@ -148,5 +160,6 @@
                 }
             });
         };
+        document.addEventListener("DOMContentLoaded", parseData);
     </script>
 </html>
